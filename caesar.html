@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 320px;
+            height: 320px;
+            user-select: none;
+            top: 0;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <canvas></canvas> -->
+    <div id="cipher">
+        <img src="./caesar-inner.png" draggable="false">
+        <img id="outer" src="./caesar-outer.png" draggable="false">
+    </div>
+</body>
+<script>
+    const cipher = document.getElementById("cipher")
+    const disk = document.getElementById("outer")
+    const rev = 2 * Math.PI
+    let initAngle = 0
+    let diskAngle = 0
+    let shift = 0
+    function getMouseAngle(e) { return Math.atan2(e.clientY - 160, e.clientX - 160) }
+    function getDiskAngle(e) { return normalise(getMouseAngle(e) - initAngle + diskAngle) }
+    function normalise(angle) { return (angle + rev) % rev }
+    function rotate(e) { disk.style.transform = `rotate(${getDiskAngle(e)}rad)` }
+    cipher.addEventListener("mousedown", e => {
+        initAngle = normalise(getMouseAngle(e))
+        cipher.addEventListener("mousemove", rotate)
+    })
+    cipher.addEventListener("mouseup", e => {
+        diskAngle = getDiskAngle(e)
+        shift = Math.round((1 - diskAngle / rev) % 1 * 26)
+        cipher.removeEventListener("mousemove", rotate)
+    })
+</script>
+
+</html>
