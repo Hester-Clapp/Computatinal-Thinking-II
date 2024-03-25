@@ -60,6 +60,8 @@
             color: rgb(43, 76, 56);
             background-color: rgb(205, 230, 198);
             margin: 1rem auto;
+            margin-top: 4rem;
+            margin-bottom: 2rem;
             width: fit-content;
             padding: 1rem 5ch;
         }
@@ -79,6 +81,27 @@
 
         li {
             margin: 0.5rem 0;
+        }
+
+        #cipherButton {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 2rem;
+            padding: 1rem 1ch;
+            margin: 0;
+            border: 0;
+            background-color: #445;
+            color: #445;
+        }
+
+        #cipherButton:hover {
+            background-color: #667;
+            color: white;
+        }
+
+        #cipher {
+            display: none;
         }
 
         footer {
@@ -132,6 +155,7 @@
 
 <body>
     <h1>Computational Thinking</h1>
+    <button id="cipherButton">Decipher</button>
     <div id="cipher">
         <img src="./caesar-inner.png" draggable="false">
         <img id="outer" src="./caesar-outer.png" draggable="false">
@@ -226,11 +250,13 @@
     let shift = disableCipher ? 0 : Math.floor(Math.random() * 26)
     const content = []
     document.querySelectorAll("h1,h2,h3,p,li").forEach((p, i) => { content[i] = encrypt(p.innerHTML); p.innerHTML = content[i] })
+    const button = document.getElementById("cipherButton")
     const cipher = document.getElementById("cipher")
     const disk = document.getElementById("outer")
     const rev = 2 * Math.PI
     let initAngle = 0
     let diskAngle = 0
+    let isOpen = false
     function getMouseAngle(e) { return Math.atan2(e.clientY - 160, e.clientX - 160) }
     function getDiskAngle(e) { return normalise(getMouseAngle(e) - initAngle + diskAngle) }
     function normalise(angle) { return (angle + rev) % rev }
@@ -243,16 +269,30 @@
             return v
         }).join("")
     }
-    cipher.addEventListener("mousedown", e => {
+    function mouseDown(e) {
         initAngle = normalise(getMouseAngle(e))
         cipher.addEventListener("mousemove", rotate)
-    })
-    cipher.addEventListener("mouseup", e => {
+    }
+    function mouseUp(e) {
         cipher.removeEventListener("mousemove", rotate)
         diskAngle = getDiskAngle(e)
         shift = Math.round((1 - diskAngle / rev) % 1 * 26)
         document.querySelectorAll("h1,h2,h3,p,li").forEach((p, i) => { p.innerText = encrypt(content[i]) })
+    }
+    button.addEventListener("click", () => {
+        if (isOpen) {
+            isOpen = false
+            cipher.removeEventListener("mousedown", mouseDown)
+            cipher.removeEventListener("mouseup", mouseUp)
+            cipher.style.display = "none"
+        } else {
+            isOpen = true
+            cipher.addEventListener("mousedown", mouseDown)
+            cipher.addEventListener("mouseup", mouseUp)
+            cipher.style.display = "block"
+        }
     })
+    setTimeout(() => { button.style.color = "white" }, 2000)
 </script>
 
 </html>
