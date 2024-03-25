@@ -6,9 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Computational Thinking II</title>
     <style>
-        p,
+        #cipher {
+            text-align: left;
+        }
+
+        #cipher img {
+            position: absolute;
+        }
+
+        p {
+            margin: 1ch 1rem;
+        }
+
         img {
-            margin: 1ch;
+            margin: 1ch 1rem;
+            width: 40ch;
+            height: auto;
+        }
+
+        img.exact {
+            width: fit-content;
+            height: fit-content;
+        }
+
+        img.inline {
+            display: inline;
+            height: 1.5rem;
+            width: auto;
+            vertical-align: middle;
+            padding: 0 1ch;
+            margin: 0;
         }
 
         body {
@@ -44,6 +71,7 @@
             margin: auto;
         }
 
+        ol,
         ul {
             display: inline-block;
             text-align: left;
@@ -53,12 +81,31 @@
             margin: 0.5rem 0;
         }
 
-        #cipher {
-            text-align: left;
+        footer {
+            background-color: #445;
+            padding: 1rem 1ch;
+            color: white;
         }
 
-        #cipher img {
-            position: absolute;
+        footer ul {
+            display: flex;
+            gap: 2ch;
+            align-self: center;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        footer ul a {
+            color: white;
+            padding: 1rem 4ch;
+            background-color: #445;
+        }
+
+        footer ul a:hover {
+            background-color: #667;
         }
     </style>
 </head>
@@ -70,15 +117,15 @@
 
         Make a favicon (little icon in the tab, next to the title)
 
-        Use an ordered list
-
-        Use a hyperlink
-
         Benefits/drawbacks of concurrent processing
 
-        The actually good bit on problem solving
+        Explain pipelining
 
-        Style the footer
+        Introduce the travelling salesman problem (maybe use the giraffes as an example?)
+
+        Explain time complexity
+
+        Demonstrate heuristics
 
     </todo>
  -->
@@ -101,11 +148,11 @@
     <p>Test it with a trace table</p>
     <p>(or just use an IDE that tells you what went wrong)</p>
     <h2>Concurrent Processing</h2>
-    <!--<iframe width="560" height="315"
+    <iframe width="560" height="315"
         src="https://www.youtube.com/embed/tVg25_60sNo?si=gFXimSIMLT2J8c5T&autoplay=1&mute=1&loop=1&controls=0&playlist=tVg25_60sNo"
         title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>-->
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     <div>
         <ul>
             <li>Concurrent processing is where multiple tasks are worked on at the same time, where the processor
@@ -115,15 +162,61 @@
                 processor.</li>
         </ul>
     </div>
+    <p>Sequential: </p><img src="sequential.png" class="exact">
+    <p>Concurrent: </p><img src="concurrent.png" class="exact">
+    <p>Parallel: </p><img src="parallel.png" class="exact">
+    <h3>Concurrent Processing</h3>
+    <p>reduces downtime, but takes longer to finish tasks</p>
+    <h3>Parallel Processing</h3>
+    <p>executes tasks faster, but requires more expensive hardware</p>
+    <!-- These explanations could be improved -->
     <h2>Problems</h2>
-    <img src="barraconstruction.gif">
+    <p>A problem is computable if:</p>
+    <div>
+        <ol>
+            <li>It can be solved by an algorithm</li>
+            <li>In a finite amount of time</li>
+            <li>For any case</li>
+        </ol>
+    </div>
+    <h3>Simulation</h3>
+    <p>If you want to do something, but you don't want to actually do it, you can create a model and simulate
+        doing it. This saves time and money
+    </p>
+    <h3>Divide and Conquer</h3>
+    <p>A method of solving problems by making them smaller and simpler, until they are trivial, then combining
+        them back
+        up to the original. Examples of algorithms that use this include binary search and quicksort.</p>
+    <img src="infinite-dragon-dream-feet-loop.gif">
+    <h3>Backtracking</h3>
+    <p>This involves making decisions and keeping track of them until you reach a dead end, then retracing your steps
+        with the knowledge that the choice you made doesn't work. Used in algorithms such as depth-first search and
+        recursive backtracking maze generators.</p>
+    <h3>Abstraction</h3>
+    <p>If you have a problem, try using graph theory. The problem may be isomorphic to something very simple</p>
+    <h3>Automation</h3>
+    <p>(is this just the same as abstract modelling?)</p>
+    <h2>Problem Solving</h2>
+    <h3>Visualisation</h3>
+    <p>Many problems can easily be visualised with a graph or a tree. This makes it easy to spot obvious solutions,
+        avoiding unnecessary work with a simple diagram. (Miss McEwan would agree)</p>
+    <h3>Data Mining</h3>
+    <p><i>“Big data is big. Really big. You just won't believe how vastly, hugely, mind-bogglingly big it is. I mean,
+            you may think it's a long way down the road to the chemist's, but that's just peanuts to big data!”</i></p>
+    <p>Data mining is about searching for patterns and correlations in datasets that are so large, conventional methods
+        cannot be used.</p>
+    <h3>Pipelining</h3>
+    <!-- I don't know how to explain this well -->
+    <h2>Travelling Salesman Problem</h2>
+    <!-- finish the rest of chapter 52 here -->
+    <img src="barraconstruction.gif" class="exact">
     <footer>
-        <p>Collaborators:</p>
+        <p>Contributors:</p>
         <ul>
-            <li>Hester</li>
-            <li>Lucy</li>
-            <li>Louise</li>
-            <li>Rebecca</li>
+            <a href="https://cms-compsci.deno.dev/hester">Hester</a>
+            <!-- <a href="https://cms-compsci.deno.dev/lucy">Lucy</a> -->
+            <!-- <a href="https://cms-compsci.deno.dev/louise">Louise</a> -->
+            <!-- <a href="https://cms-compsci.deno.dev/rebecca">Rebecca</a> -->
         </ul>
     </footer>
 </body>
@@ -132,7 +225,7 @@
 
     let shift = disableCipher ? 0 : Math.floor(Math.random() * 26)
     const content = []
-    document.querySelectorAll("h1,h2,h3,p").forEach((p, i) => { content[i] = encrypt(p.innerText); p.innerText = content[i] })
+    document.querySelectorAll("h1,h2,h3,p,li").forEach((p, i) => { content[i] = encrypt(p.innerHTML); p.innerHTML = content[i] })
     const cipher = document.getElementById("cipher")
     const disk = document.getElementById("outer")
     const rev = 2 * Math.PI
@@ -158,7 +251,7 @@
         cipher.removeEventListener("mousemove", rotate)
         diskAngle = getDiskAngle(e)
         shift = Math.round((1 - diskAngle / rev) % 1 * 26)
-        document.querySelectorAll("h1,h2,h3,p").forEach((p, i) => { p.innerText = encrypt(content[i]) })
+        document.querySelectorAll("h1,h2,h3,p,li").forEach((p, i) => { p.innerText = encrypt(content[i]) })
     })
 </script>
 
