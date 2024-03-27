@@ -4,40 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computational Thinking II</title>
+    <title>Computatinal Thinking II</title>
     <style>
-        #cipher {
-            text-align: left;
-        }
-
-        #cipher img {
-            position: absolute;
-        }
-
-        p {
-            margin: 1ch 1rem;
-        }
-
-        img {
-            margin: 1ch 1rem;
-            width: 40ch;
-            height: auto;
-        }
-
-        img.exact {
-            width: fit-content;
-            height: fit-content;
-        }
-
-        img.inline {
-            display: inline;
-            height: 1.5rem;
-            width: auto;
-            vertical-align: middle;
-            padding: 0 1ch;
-            margin: 0;
-        }
-
         body {
             margin: 0;
             text-align: center;
@@ -52,7 +20,7 @@
             margin-bottom: 1rem;
             margin: 0;
             background: #445;
-            color: white
+            color: white;
         }
 
         h2 {
@@ -101,7 +69,45 @@
         }
 
         #cipher {
+            text-align: left;
             display: none;
+        }
+
+        #cipher img {
+            position: absolute;
+        }
+
+        p {
+            margin: 1ch 1rem;
+        }
+
+        img {
+            margin: 1ch 1rem;
+            width: 40ch;
+            height: auto;
+        }
+
+        img.exact {
+            width: fit-content;
+            height: fit-content;
+        }
+
+        img.inline {
+            display: inline;
+            height: 1.5rem;
+            width: auto;
+            vertical-align: middle;
+            padding: 0 1ch;
+            margin: 0;
+        }
+
+        table {
+            margin: auto;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 1ch 1rem;
         }
 
         footer {
@@ -225,24 +231,50 @@
     <p>Many problems can easily be visualised with a graph or a tree. This makes it easy to spot obvious solutions,
         avoiding unnecessary work with a simple diagram. (Miss McEwan would agree)</p>
     <h3>Data Mining</h3>
-    <p><i>“Big data is big. Really big. You just won't believe how vastly, hugely, mind-bogglingly big it is. I mean,
-            you may think it's a long way down the road to the chemist's, but that's just peanuts to big data!”</i></p>
+    <i>
+        <p>“Big data is big. Really big. You just won't believe how vastly, hugely, mind-bogglingly big it is. I mean,
+            you may think it's a long way down the road to the chemist's, but that's just peanuts to big data!”</p>
+    </i>
     <p>Data mining is about searching for patterns and correlations in datasets that are so large, conventional methods
         cannot be used.</p>
     <h3>Pipelining</h3>
-    <p>Pipelining is basically where you break up a task into lots of little ones then overlap their processing. For example, when one is being processed one way, another is being processed in another, etc.</p>
+    <p>Pipelining is basically where you break up a task into lots of little ones then overlap their processing. For
+        example, when one is being processed one way, another is being processed in another, etc.</p>
     <h2>Travelling Salesman Problem</h2>
-    <p>Says that given a list of places and the distances between them, find the shortest route that the salesman can go to visit each town once and get back to where he started. Its said to be intractable because it will take a long time with a very fast computer to find an optimal solution to a problem with a small amount of cities. It becomes impossible as the cities increase. 😔
-    </p>
+    <p>Says that given a list of places and the distances between them, find the shortest route that the salesman can go
+        to visit each town once and get back to where he started.</p>
+    <img src="TSP.jpg">
+    <p>Its said to be intractable because it will take a long
+        time with a very fast computer to find an optimal solution to a problem with a small amount of cities. It
+        becomes impossible as the number of cities increases. 😔</p>
     <h3>Comparing time complexities</h3>
+    <p>Time complexity is a measure of how long an algorithm takes as the number of inputs scales. It doesn't tell us
+        exactly how long the algorithm will take to complete, but rather how much longer it would take when the problem
+        gets bigger.</p>
+    <p>Time complexities often end up falling into categories, the highest order term in the polynomial function. These
+        are, in ascending order of size:</p>
+    <table>
+        <tr>
+            <td>O(1)</td>
+            <td>O(log n)</td>
+            <td>O(n)</td>
+            <td>O(n log n)</td>
+            <td>O(n²)</td>
+            <td>O(2ⁿ)</td>
+            <td>O(n!)</td>
+        </tr>
+    </table>
+    <img src="time-complexity.png">
+    <h3>Heuristics</h3>
+    <p></p>
+    <!-- Someone write this, maybe Lucy? -->
     <img src="barraconstruction.gif" class="exact">
     <footer>
         <p>Contributors:</p>
         <ul>
             <a href="https://cms-compsci.deno.dev/hester">Hester</a>
-            <!-- <a href="https://cms-compsci.deno.dev/lucy">Lucy</a> -->
             <a href="https://cms-compsci.deno.dev/louise">Louise</a>
-            <!-- <a href="https://cms-compsci.deno.dev/rebecca">Rebecca</a> -->
+            <!-- <a href="https://cms-compsci.deno.dev/lucy">Lucy</a> -->
         </ul>
     </footer>
 </body>
