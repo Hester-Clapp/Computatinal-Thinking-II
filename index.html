@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Computatinal Thinking II</title>
+    <link rel="icon" href="favicon.png">
     <style>
         body {
             margin: 0;
@@ -111,8 +112,9 @@
         }
 
         footer {
-            background-color: #445;
+            margin-top: 8rem;
             padding: 1rem 1ch;
+            background-color: #445;
             color: white;
         }
 
@@ -138,26 +140,6 @@
         }
     </style>
 </head>
-
-<!-- 
-    <todo>
-
-        Research (all)
-
-        Make a favicon (little icon in the tab, next to the title)
-
-        Benefits/drawbacks of concurrent processing
-
-        Explain pipelining
-
-        Introduce the travelling salesman problem (maybe use the giraffes as an example?)
-
-        Explain time complexity
-
-        Demonstrate heuristics
-
-    </todo>
- -->
 
 <body>
     <h1>Computational Thinking</h1>
@@ -186,8 +168,7 @@
     <div>
         <ul>
             <li>Concurrent processing is where multiple tasks are worked on at the same time, where the processor
-                alternates
-                between them.</li>
+                alternates between them.</li>
             <li>Parallel processing is where multiple instructions are executed simultaneously on different cores of the
                 processor.</li>
         </ul>
@@ -196,10 +177,11 @@
     <p>Concurrent: </p><img src="concurrent.png" class="exact">
     <p>Parallel: </p><img src="parallel.png" class="exact">
     <h3>Concurrent Processing</h3>
-    <p>reduces downtime, but takes longer to finish tasks</p>
+    <p>+ reduces downtime</p>
+    <p>- takes longer to finish tasks</p>
     <h3>Parallel Processing</h3>
-    <p>executes tasks faster, but requires more expensive hardware</p>
-    <!-- These explanations could be improved -->
+    <p>+ completes tasks faster</p>
+    <p>- requires more expensive hardware</p>
     <h2>Problems</h2>
     <p>A problem is computable if:</p>
     <div>
@@ -266,20 +248,24 @@
     </table>
     <img src="time-complexity.png">
     <h3>Heuristics</h3>
-    <p>Problems can be solved enough by: getting a solution with a high probability of being correct, solving a simpler version or by applying a methodology not guaranteed to be optimal but is sufficient. The latter being the heuristic approach. The aim is to find a good solution within a reasonable time frame. Some heuristic solutions have already been comprised for the travelling salesman problem.</p>
+    <p>Problems can be solved enough by: getting a solution with a high probability of being correct, solving a simpler
+        version or by applying a methodology not guaranteed to be optimal but is sufficient (the heuristic approach).
+        The aim is to find a good solution within a reasonable time frame.</p>
+    <p>Some heuristic solutions have already been comprised for solving the travelling salesman problem, knight's tour,
+        and are used to optimise</p><a href="https://cms-compsci.deno.dev/hester/pathfinding-interactive/index.html">A*
+        pathfinding</a>
     <footer>
         <p>Contributors:</p>
         <ul>
             <a href="https://cms-compsci.deno.dev/hester">Hester</a>
             <a href="https://cms-compsci.deno.dev/louise">Louise</a>
-            <!-- <a href="https://cms-compsci.deno.dev/lucy">Lucy</a> -->
         </ul>
     </footer>
 </body>
 <script>
     const disableCipher = false
 
-    let shift = disableCipher ? 0 : Math.floor(Math.random() * 26)
+    let shift = disableCipher ? 0 : (Math.floor(Math.random() * 25) + 1)
     const content = []
     document.querySelectorAll("h1,h2,h3,p,li").forEach((p, i) => { content[i] = encrypt(p.innerHTML); p.innerHTML = content[i] })
     const button = document.getElementById("cipherButton")
